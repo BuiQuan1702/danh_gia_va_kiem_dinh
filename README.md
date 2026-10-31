@@ -2,10 +2,10 @@
 
 ## Thông tin nhóm
 
-- **Môn học:** [Tên môn học]
-- **Giảng viên:** [Tên giảng viên]
+- **Môn học:** [Đánh giá và kiểm định chất lượng phần mềm]
+- **Giảng viên:** [TS. Trịnh Thanh Bình]
 - **Thành viên 1 (thực hiện kiểm thử):** [Bùi Minh Quân] – MSSV 23010725
-- **Thành viên 2 (viết báo cáo, video):** [Họ tên] – MSSV [...]
+- **Thành viên 2 (viết báo cáo, video):** [Nguyễn Ngọc Trọng] – MSSV 23010763
 - **Đối tượng kiểm thử:** website bán hàng thời trang QUDENA (PHP, Laravel), chạy local tại `http://127.0.0.1:8000`
 
 ## 1. Mục tiêu
