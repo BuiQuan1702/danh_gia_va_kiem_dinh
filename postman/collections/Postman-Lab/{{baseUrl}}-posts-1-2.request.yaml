@@ -1,0 +1,14 @@
+$kind: http-request
+name: "{{baseUrl}}/posts/1"
+description: ""
+url: "{{baseUrl}}/posts/1"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code là 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Thời gian < 1000ms\", () => pm.expect(pm.response.responseTime).to.be.below(1000));\r
+
+      pm.test(\"Response là object rỗng\", () => pm.expect(pm.response.json()).to.eql({}));"
+    language: text/javascript
+order: 4501608616448813

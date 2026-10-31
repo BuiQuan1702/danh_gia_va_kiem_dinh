@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/cart"
+method: POST
+body:
+  type: urlencoded
+  content:
+    _token: "{{csrf_token}}"
+    product_variant_id: "{{variantId}}"
+    quantity: "1"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 302\", () => pm.response.to.have.status(302));\r
+
+      pm.test(\"Chuyển hướng về trang trong website\", () => pm.expect(pm.response.headers.get(\"Location\")).to.include(pm.environment.get(\"baseUrl\")));\r
+
+      pm.test(\"Không bị đẩy về login\", () => pm.expect(pm.response.headers.get(\"Location\")).to.not.include(\"/login\"));"
+    language: text/javascript
+settings:
+  followRedirects: false
+order: 787

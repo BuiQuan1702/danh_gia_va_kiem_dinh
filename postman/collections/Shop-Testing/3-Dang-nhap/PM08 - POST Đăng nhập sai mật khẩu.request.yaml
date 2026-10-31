@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/login"
+method: POST
+body:
+  type: urlencoded
+  content:
+    _token: "{{csrf_token}}"
+    email: "{{testEmail}}"
+    password: sai_mat_khau
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 302\", () => pm.response.to.have.status(302));\r
+
+      pm.test(\"Quay lại trang login\", () => pm.expect(pm.response.headers.get(\"Location\")).to.include(\"/login\"));"
+    language: text/javascript
+settings:
+  followRedirects: false
+order: 2000

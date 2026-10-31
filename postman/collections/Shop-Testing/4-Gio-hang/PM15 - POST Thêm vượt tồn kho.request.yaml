@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/cart"
+method: POST
+body:
+  type: urlencoded
+  content:
+    _token: "{{csrf_token}}"
+    product_variant_id: "{{variantId}}"
+    quantity: "20"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Server phản hồi có kiểm soát (302 hoặc 422)\", () => pm.expect([302, 422]).to.include(pm.response.code));\r
+
+      pm.test(\"Không lỗi server (không 500)\", () => pm.expect(pm.response.code).to.be.below(500));"
+    language: text/javascript
+settings:
+  followRedirects: false
+order: 4000

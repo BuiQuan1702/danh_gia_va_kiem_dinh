@@ -1,0 +1,22 @@
+$kind: http-request
+name: "{{baseUrl}}/posts/1"
+description: ""
+url: "{{baseUrl}}/posts/1"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code là 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Thời gian < 1000ms\", () => pm.expect(pm.response.responseTime).to.be.below(1000));\r
+
+      pm.test(\"Có id = 1\", () => pm.expect(pm.response.json().id).to.eql(1));\r
+
+      pm.test(\"Có đủ các trường\", () => {\r
+
+      \  const data = pm.response.json();\r
+
+      \  pm.expect(data).to.have.all.keys(\"userId\", \"id\", \"title\", \"body\");\r
+
+      });"
+    language: text/javascript
+order: 2634637913807763

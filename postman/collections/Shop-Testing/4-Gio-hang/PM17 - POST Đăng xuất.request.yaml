@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/logout"
+method: POST
+body:
+  type: urlencoded
+  content:
+    _token: "{{csrf_token}}"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 302\", () => pm.response.to.have.status(302));\r
+
+      pm.test(\"Không có lỗi server\", () => pm.expect(pm.response.code).to.be.below(500));"
+    language: text/javascript
+settings:
+  followRedirects: false
+order: 5000

@@ -1,0 +1,25 @@
+$kind: http-request
+name: "{{baseUrl}}/posts"
+description: ""
+url: "{{baseUrl}}/posts"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"title\": \"Test Postman\",\r
+
+    \  \"body\": \"Noi dung\",\r
+
+    \  \"userId\": 1\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code là 201\", () => pm.response.to.have.status(201));\r
+
+      pm.test(\"Có id trả về\", () => pm.expect(pm.response.json()).to.have.property(\"id\"));\r
+
+      pm.test(\"Title đúng với dữ liệu gửi\", () => pm.expect(pm.response.json().title).to.eql(\"Test Postman\"));"
+    language: text/javascript
+order: 2730886413077642

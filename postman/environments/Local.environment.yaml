@@ -1,0 +1,14 @@
+name: Local
+values:
+  - key: baseUrl
+    value: ''
+  - key: testEmail
+    value: ''
+  - key: testPassword
+    value: ''
+  - key: productSlug
+    value: ''
+  - key: csrf_token
+    value: ''
+  - key: variantId
+    value: ''

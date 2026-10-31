@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{baseUrl}}/admin/dashboard"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Bị chuyển hướng (302)\", () => pm.response.to.have.status(302));\r
+
+      pm.test(\"Chuyển về trang login\", () => pm.expect(pm.response.headers.get(\"Location\")).to.include(\"/login\"));"
+    language: text/javascript
+settings:
+  followRedirects: false
+order: 1793353571574

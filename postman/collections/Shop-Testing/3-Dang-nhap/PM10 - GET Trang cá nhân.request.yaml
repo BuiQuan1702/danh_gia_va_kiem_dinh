@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/profile"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Hiện email tài khoản\", () => pm.expect(pm.response.text()).to.include(pm.environment.get(\"testEmail\")));\r
+
+      const m = pm.response.text().match(/name=\"csrf-token\"[^>]*content=\"([^\"]+)\"/);\r
+
+      if (m) pm.environment.set(\"csrf_token\", m[1]);"
+    language: text/javascript
+order: 4000

@@ -1,0 +1,17 @@
+$kind: http-request
+name: "{{baseUrl}}/posts"
+description: ""
+url: "{{baseUrl}}/posts"
+method: GET
+body:
+  type: json
+  content: '{ "title": "Test Postman", "body": "Noi dung", "userId": 1 }'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code là 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Thời gian < 1000ms\", () => pm.expect(pm.response.responseTime).to.be.below(1000));\r
+
+      pm.test(\"Trả về mảng\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));"
+    language: text/javascript
+order: 1791370823392

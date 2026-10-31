@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/login"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "const html = pm.response.text();\r
+
+      const m = html.match(/name=\"_token\"[^>]*value=\"([^\"]+)\"/)\r
+
+      \       || html.match(/name=\"csrf-token\"[^>]*content=\"([^\"]+)\"/);\r
+
+      pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Có CSRF token\", () => pm.expect(m).to.not.be.null);\r
+
+      if (m) pm.environment.set(\"csrf_token\", m[1]);"
+    language: text/javascript
+order: 1000
