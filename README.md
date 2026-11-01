@@ -1,5 +1,5 @@
 # Báo cáo kiểm thử và đánh giá chất lượng website bán hàng QUDENA
-
+Link demo:https://www.youtube.com/watch?v=2riUDbBL_Dw
 ## Thông tin nhóm
 
 - **Môn học:** [Đánh giá và kiểm định chất lượng phần mềm]
